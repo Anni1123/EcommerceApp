@@ -74,6 +74,8 @@ public class HomeActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView userNameTextView = headerView.findViewById(R.id.username);
         CircleImageView profileImageView = headerView.findViewById(R.id.profile_image);
+
+        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
         recyclerView = findViewById(R.id.recycler_list);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);

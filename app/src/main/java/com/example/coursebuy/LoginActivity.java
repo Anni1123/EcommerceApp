@@ -138,6 +138,7 @@ NotAdminLink.setOnClickListener(new View.OnClickListener() {
 
 
                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                               Prevalent.currentOnlineUser=userdata;
                                startActivity(intent);
                            }
                         }
