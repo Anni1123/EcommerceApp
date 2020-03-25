@@ -43,5 +43,6 @@ dependencies {
     implementation 'io.paperdb:paperdb:2.6'
     implementation 'com.github.rey5137:material:1.2.5'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
