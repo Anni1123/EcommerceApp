@@ -14,11 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.coursebuy.Model.Users;
+import com.example.coursebuy.Prevalent.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -27,19 +31,21 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressDialog loadingBar;
     private TextView AdminLink, NotAdminLink;
     private String parentdbname="Users";
+    private CheckBox checkBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
-
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputPassword = (EditText) findViewById(R.id.login_password);
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
+        AdminLink=(TextView)findViewById(R.id.admin_panel_link);
+        NotAdminLink=(TextView)findViewById(R.id.not_admin_panel_link);
+        checkBox=(com.rey.material.widget.CheckBox)findViewById(R.id.remember_me_chkb);
+        Paper.init(this);
         loadingBar = new ProgressDialog(this);
 
 
@@ -51,7 +57,24 @@ public class LoginActivity extends AppCompatActivity {
                 LoginUser();
             }
         });
-
+AdminLink.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        LoginButton.setText("Login Admin");
+        AdminLink.setVisibility(View.INVISIBLE);
+        NotAdminLink.setVisibility(View.VISIBLE);
+        parentdbname="Admins";
+    }
+});
+NotAdminLink.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        LoginButton.setText("Login");
+        AdminLink.setVisibility(View.VISIBLE);
+        NotAdminLink.setVisibility(View.INVISIBLE);
+        parentdbname="Users";
+    }
+});
 
     }
     private void LoginUser(){
@@ -87,6 +110,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void AllowAccessToAccount(final String phone, final String password) {
 
+        if(checkBox.isChecked()){
+            Paper.book().write(Prevalent.UserPhonekey,phone);
+            Paper.book().write(Prevalent.UserPassword,password);
+        }
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -97,12 +124,22 @@ public class LoginActivity extends AppCompatActivity {
                     if(userdata.getPhone().equals(phone)){
                         if(userdata.getPassword().equals(password)){
 
-                            Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
+                           if(parentdbname.equals("Admins")){
+                               Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                               loadingBar.dismiss();
 
 
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
+                               Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                               startActivity(intent);
+                           }
+                           else if(parentdbname.equals("Users")){
+                               Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                               loadingBar.dismiss();
+
+
+                               Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                               startActivity(intent);
+                           }
                         }
                         else
                         {

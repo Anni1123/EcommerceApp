@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import io.paperdb.Paper;
+
 public class HomeActivity extends AppCompatActivity {
 
     private Button logout;
@@ -18,8 +22,8 @@ public class HomeActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this,MainActivity.class));
-            }
+                Paper.book().destroy();
+                FirebaseAuth.getInstance().signOut();            }
         });
     }
 }
