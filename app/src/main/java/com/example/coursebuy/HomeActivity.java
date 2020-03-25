@@ -94,12 +94,20 @@ public class HomeActivity extends AppCompatActivity
                 .setQuery(ProductsRef,Products.class).build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter=new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model) {
                 holder.txtproductname.setText(model.getPname());
                 holder.txtproduxtdesc.setText(model.getDescription());
                 holder.txtproductprice.setText("Price =" +model.getPrice()+"Rs.");
                 Picasso.with(HomeActivity.this).load(model.getImage()).into(holder.image);
 
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(HomeActivity.this,ProductsDetailActivity.class);
+                        intent.putExtra("pid",model.getPid());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull
