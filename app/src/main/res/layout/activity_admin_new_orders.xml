@@ -27,7 +27,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cart_list"
+        android:id="@+id/order_list"
         android:layout_below="@+id/r2">
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
