@@ -1,14 +1,14 @@
 package com.example.coursebuy;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.coursebuy.Model.Cart;
 import com.example.coursebuy.ViewHolder.CartViewHolder;
@@ -17,32 +17,30 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AdminUserProductActivity extends AppCompatActivity
-{
+import android.os.Bundle;
+
+public class AdminUserProductActivity extends AppCompatActivity {
     private RecyclerView productsList;
     RecyclerView.LayoutManager layoutManager;
     private DatabaseReference cartListRef;
 
     private String userID = "";
 
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_user_product);
-        userID = getIntent().getStringExtra("uId");
-        productsList = findViewById(R.id.products_list);
-        productsList.setHasFixedSize(true);
+
+        userID = getIntent().getStringExtra("uid");
+
+
+        productsList = findViewById(R.id.product_list);
         layoutManager = new LinearLayoutManager(this);
         productsList.setLayoutManager(layoutManager);
-
 
         cartListRef = FirebaseDatabase.getInstance().getReference()
                 .child("Cart List").child("Admin View").child(userID).child("Products");
     }
-
 
     @Override
     protected void onStart()
@@ -78,3 +76,4 @@ public class AdminUserProductActivity extends AppCompatActivity
         adapter.startListening();
     }
 }
+

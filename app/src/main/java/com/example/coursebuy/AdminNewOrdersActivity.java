@@ -35,7 +35,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
         ordersRef = FirebaseDatabase.getInstance().getReference().child("Orders");
 
 
-        ordersList = findViewById(R.id.order_list);
+        ordersList = findViewById(R.id.orderlist);
         ordersList.setLayoutManager(new LinearLayoutManager(this));
 
 }
@@ -69,7 +69,7 @@ public class AdminNewOrdersActivity extends AppCompatActivity {
                                 String uID = getRef(position).getKey();
 
                                 Intent intent = new Intent(AdminNewOrdersActivity.this, AdminUserProductActivity.class);
-                                intent.putExtra("uId", uID);
+                                intent.putExtra("uid", uID);
                                 startActivity(intent);
                             }
                         });

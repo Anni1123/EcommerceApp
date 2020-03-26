@@ -15,7 +15,7 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:id="@+id/order"
+            android:id="@+id/orders"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
             android:textSize="25dp"
@@ -27,7 +27,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/order_list"
+        android:id="@+id/orderlist"
         android:layout_below="@+id/r2">
     </androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>
