@@ -178,7 +178,7 @@ public class CartActivity extends AppCompatActivity {
                         Toast.makeText(CartActivity.this,"You can order Again",Toast.LENGTH_LONG).show();
                     }else if(shippingstate.equals("not shipped")){
 
-                        txtTotalAmount.setText("shipping state = Not Shipped");
+                        txtTotalAmount.setText("Shipping state = Not Shipped");
                         recyclerView.setVisibility(View.GONE);
                         txtMsg1.setVisibility(View.VISIBLE);
                         NextProcessBtn.setVisibility(View.GONE);

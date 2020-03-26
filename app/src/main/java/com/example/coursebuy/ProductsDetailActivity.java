@@ -191,4 +191,27 @@ public class ProductsDetailActivity extends AppCompatActivity {
             }
         });
     }
+    private void checkOrderState(){
+        DatabaseReference order=FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
+        order.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    String shippingstate=dataSnapshot.child("state").getValue().toString();
+                    if(shippingstate.equals("shipped")){
+
+                        state="Order Shippped";
+                    }else if(shippingstate.equals("not shipped")){
+
+                        state="Order Placed";
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
