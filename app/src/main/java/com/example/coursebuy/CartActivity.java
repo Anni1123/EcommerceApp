@@ -82,6 +82,7 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        checkOrderState();
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         FirebaseRecyclerOptions<Cart> options =
@@ -158,6 +159,40 @@ public class CartActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         adapter.startListening();
+    }
+    private void checkOrderState(){
+        DatabaseReference order=FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
+        order.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    String shippingstate=dataSnapshot.child("state").getValue().toString();
+                    String username=dataSnapshot.child("pname").getValue().toString();
+                    if(shippingstate.equals("shipped")){
+
+                        txtTotalAmount.setText("Dear" +username+"\n Your Order is shipped Successfully");
+                        recyclerView.setVisibility(View.GONE);
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        txtMsg1.setText("Congratulations, your final order has been shipped successfully. Soon it will be at your doorstep.");
+                        NextProcessBtn.setVisibility(View.GONE);
+                        Toast.makeText(CartActivity.this,"You can order Again",Toast.LENGTH_LONG).show();
+                    }else if(shippingstate.equals("not shipped")){
+
+                        txtTotalAmount.setText("shipping state = Not Shipped");
+                        recyclerView.setVisibility(View.GONE);
+                        txtMsg1.setVisibility(View.VISIBLE);
+                        NextProcessBtn.setVisibility(View.GONE);
+                        Toast.makeText(CartActivity.this,"You can order Again",Toast.LENGTH_LONG).show();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

@@ -30,7 +30,7 @@
     android:textAlignment="center"
     android:textSize="20dp"
     android:textColor="@color/colorPrimaryDark"
-    android:text="Congratulations, your final order has been placed successfully. Soon it will be verified."
+    android:text="Congratulations, your final order has been placed successfully. Soon it will be at your doorstep"
     android:visibility="gone"
     android:layout_centerVertical="true"
     android:layout_marginEnd="10dp"
