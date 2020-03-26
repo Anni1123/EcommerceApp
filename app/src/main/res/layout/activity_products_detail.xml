@@ -65,6 +65,5 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="15dp"
         android:text="Add to Cart"
-        android:id="@+id/btn_add_cart"
-        />
+        android:id="@+id/btn_add_cart"/>
 </RelativeLayout>
