@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp">
 
-    <RelativeLayout android:layout_height="match_parent" android:layout_width="match_parent" android:background="@color/colorPrimaryDark" android:padding="10dp">
+    <RelativeLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:background="@color/colorPrimaryDark" android:padding="10dp">
 
     <TextView android:layout_height="wrap_content" android:layout_width="160dp" android:textStyle="bold" android:layout_marginLeft="2dp" android:textSize="15dp" android:textColor="@android:color/white" android:text="Product Name" android:id="@+id/cart_product_name"/>
 
