@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class AdminCategoryActivity extends AppCompatActivity {
@@ -13,14 +14,14 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
+    private Button check,logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
-
-
-
+        check=(Button)findViewById(R.id.check_order);
+        logout=(Button)findViewById(R.id.logout);
         tShirts = (ImageView) findViewById(R.id.tshits);
         sportsTShirts = (ImageView) findViewById(R.id.sports);
         femaleDresses = (ImageView) findViewById(R.id.womendress);
@@ -37,6 +38,23 @@ public class AdminCategoryActivity extends AppCompatActivity {
         mobilePhones = (ImageView) findViewById(R.id.mobiles);
 
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         tShirts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)

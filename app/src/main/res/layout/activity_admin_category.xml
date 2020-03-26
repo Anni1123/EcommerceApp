@@ -12,7 +12,7 @@
         android:id="@+id/slogan_category"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="10dp"
         android:text="Add New Product"
         android:textSize="26sp"
         android:textAlignment="center"/>
@@ -23,7 +23,7 @@
         android:orientation="horizontal"
         android:layout_below="@+id/slogan_category"
         android:gravity="center"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true">
         <ImageView
             android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
         android:orientation="horizontal"
         android:layout_below="@+id/linear_category_layout"
         android:gravity="center"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true">
         <ImageView
             android:layout_width="80dp"
@@ -86,7 +86,7 @@
         android:orientation="horizontal"
         android:layout_below="@+id/linear1_category_layout"
         android:gravity="center"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true">
         <ImageView
             android:layout_width="80dp"
@@ -111,4 +111,41 @@
             android:src="@drawable/mobiles"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/check_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Check New Order"
+        android:textAllCaps="false"
+        android:textStyle="bold|italic"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/logout"
+        android:layout_marginBottom="20dp"
+        android:text="Logout"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
 </RelativeLayout>
