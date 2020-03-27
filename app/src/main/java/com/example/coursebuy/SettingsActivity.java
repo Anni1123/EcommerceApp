@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
     private EditText fullNameEditText, userPhoneEditText, addressEditText;
     private TextView profileChangeTextBtn,  closeTextBtn, saveTextButton;
 
+    private Button secure;
     private Uri imageUri;
     private String myUrl = "";
     private StorageTask uploadTask;
@@ -51,6 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         storageProfilePrictureRef = FirebaseStorage.getInstance().getReference().child("Profile pictures");
 
+        secure=(Button)findViewById(R.id.security);
         profileImageView = (CircleImageView) findViewById(R.id.setting_profile_image);
         fullNameEditText = (EditText) findViewById(R.id.nameprofile);
         userPhoneEditText = (EditText) findViewById(R.id.phone_number);
@@ -89,6 +92,15 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        secure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent=new Intent(SettingsActivity.this,ResetPasswordActivity.class);
+               intent.putExtra("settings","check");
+               startActivity(intent);
+            }
+
+        });
 
     }
     @Override

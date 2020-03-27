@@ -1,4 +1,4 @@
-package com.example.coursebuy;
+package com.example.coursebuy.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.coursebuy.HomeActivity;
+import com.example.coursebuy.MainActivity;
+import com.example.coursebuy.R;
 
 public class AdminCategoryActivity extends AppCompatActivity {
 

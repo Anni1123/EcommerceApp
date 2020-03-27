@@ -1,4 +1,4 @@
-package com.example.coursebuy;
+package com.example.coursebuy.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,12 +16,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.coursebuy.Model.AdminOrders;
+import com.example.coursebuy.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import android.os.Bundle;
 
 public class AdminNewOrdersActivity extends AppCompatActivity {
     private RecyclerView ordersList;
