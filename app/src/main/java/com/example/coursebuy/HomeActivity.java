@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    private String type="";
 
 
     @Override
@@ -47,11 +48,13 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         Paper.init(this);
-
-
+        Intent intent=getIntent();
+        Bundle bundle=intent.getExtras();
+        if(bundle!=null){
+            type=getIntent().getExtras().get("Admin").toString();
+        }
        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
@@ -80,7 +83,10 @@ public class HomeActivity extends AppCompatActivity
         TextView userNameTextView = headerView.findViewById(R.id.username);
         CircleImageView profileImageView = headerView.findViewById(R.id.profile_image);
 
-        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+        if(!type.equals("Admin")) {
+            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+            Picasso.with(HomeActivity.this).load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
         recyclerView = findViewById(R.id.recycler_list);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -103,9 +109,16 @@ public class HomeActivity extends AppCompatActivity
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent=new Intent(HomeActivity.this,ProductsDetailActivity.class);
-                        intent.putExtra("pid",model.getPid());
-                        startActivity(intent);
+                        if(type.equals("Admin")){
+                            Intent intent = new Intent(HomeActivity.this, AdminMaintainProductActivity.class);
+                            intent.putExtra("pid", model.getPid());
+                            startActivity(intent);
+                        }
+                        else {
+                            Intent intent = new Intent(HomeActivity.this, ProductsDetailActivity.class);
+                            intent.putExtra("pid", model.getPid());
+                            startActivity(intent);
+                        }
                     }
                 });
             }

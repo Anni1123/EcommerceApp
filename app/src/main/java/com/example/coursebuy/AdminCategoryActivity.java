@@ -14,19 +14,19 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
-    private Button check,logout;
+    private Button check,logout,maintainp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
         check=(Button)findViewById(R.id.check_order);
+        maintainp=(Button)findViewById(R.id.maintain_btn);
         logout=(Button)findViewById(R.id.logout);
         tShirts = (ImageView) findViewById(R.id.tshits);
         sportsTShirts = (ImageView) findViewById(R.id.sports);
         femaleDresses = (ImageView) findViewById(R.id.womendress);
         sweathers = (ImageView) findViewById(R.id.sweater);
-
         glasses = (ImageView) findViewById(R.id.glasses);
         hatsCaps = (ImageView) findViewById(R.id.hats);
         walletsBagsPurses = (ImageView) findViewById(R.id.pursebag);
@@ -38,6 +38,15 @@ public class AdminCategoryActivity extends AppCompatActivity {
         mobilePhones = (ImageView) findViewById(R.id.mobiles);
 
 
+        maintainp.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View v) {
+                                                     Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
+                                                     intent.putExtra("Admin","Admin");
+                                                     startActivity(intent);
+                                                     finish();
+                                                 }
+                                             });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
