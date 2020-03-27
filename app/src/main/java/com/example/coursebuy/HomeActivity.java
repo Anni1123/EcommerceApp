@@ -64,7 +64,10 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this,CartActivity.class));
+                if(!type.equals("Admin")){
+                    startActivity(new Intent(HomeActivity.this,CartActivity.class));
+
+                }
 
             }
         });
@@ -180,32 +183,37 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_cart)
         {
-            startActivity(new Intent(HomeActivity.this,CartActivity.class));
-
+            if(!type.equals("Admin")) {
+                startActivity(new Intent(HomeActivity.this, CartActivity.class));
+            }
         }
         else if (id == R.id.nav_search)
         {
-            startActivity(new Intent(HomeActivity.this,SearchActivity.class));
+            if(!type.equals("Admin")) {
+                startActivity(new Intent(HomeActivity.this, SearchActivity.class));
 
-
+            }
         }
         else if (id == R.id.nav_categories)
         {
 
         }
         else if (id == R.id.nav_settings)
-        {
-            startActivity(new Intent(HomeActivity.this,SettingsActivity.class));
+        {if(!type.equals("Admin")) {
+            startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
 
+        }
         }
         else if (id == R.id.nav_logout)
         {
-            Paper.book().destroy();
+            if(!type.equals("Admin")) {
+                Paper.book().destroy();
 
-            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
