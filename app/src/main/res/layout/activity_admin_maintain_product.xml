@@ -70,5 +70,18 @@
             android:layout_marginTop="2dp"
             android:layout_below="@+id/product_descm"
             android:textColor="@android:color/white"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/product_delete"
+            android:hint="Delete this Product"
+            android:background="@drawable/buttons"
+            android:padding="12dp"
+            android:layout_margin="5dp"
+            android:textAlignment="center"
+            android:textSize="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/product_butonm"
+            android:textColor="@android:color/white"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
