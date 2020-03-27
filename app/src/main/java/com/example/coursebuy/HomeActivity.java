@@ -170,8 +170,10 @@ public class HomeActivity extends AppCompatActivity
             startActivity(new Intent(HomeActivity.this,CartActivity.class));
 
         }
-        else if (id == R.id.nav_orders)
+        else if (id == R.id.nav_search)
         {
+            startActivity(new Intent(HomeActivity.this,SearchActivity.class));
+
 
         }
         else if (id == R.id.nav_categories)
