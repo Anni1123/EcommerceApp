@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(LoginActivity.this,ResetPasswordActivity.class);
-                intent.putExtra("settings","check");
+                intent.putExtra("check","login");
                 startActivity(intent);
             }
         });
