@@ -143,7 +143,7 @@ NotAdminLink.setOnClickListener(new View.OnClickListener() {
                                startActivity(intent);
                            }
                            else if(parentdbname.equals("Users")){
-                               Toast.makeText(LoginActivity.this, "WelcomeUser, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(LoginActivity.this, "Welcome User, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
                                loadingBar.dismiss();
                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                Prevalent.currentOnlineUser=userdata;
