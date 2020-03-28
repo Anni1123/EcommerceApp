@@ -180,11 +180,11 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                 builder.show();
                             }
                         } else {
-                            Toast.makeText(ResetPasswordActivity.this, "this user doesnt exist", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ResetPasswordActivity.this, "Please write correct aqnswers", Toast.LENGTH_LONG).show();
                         }
 
                     }
-                    else {                            Toast.makeText(ResetPasswordActivity.this, "this user doesnt exist", Toast.LENGTH_LONG).show();
+                    else {                            Toast.makeText(ResetPasswordActivity.this, "This user doesnt exist", Toast.LENGTH_LONG).show();
 
 
                     }
