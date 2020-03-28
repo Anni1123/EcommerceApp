@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if (usersData.getPassword().equals(password))
                         {
-                            Toast.makeText(MainActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Wait, you are already logged in...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         else
                         {
                             loadingBar.dismiss();
-                            Toast.makeText(MainActivity.this, "Password is incorrect.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Password is incorrect..Try Again.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
