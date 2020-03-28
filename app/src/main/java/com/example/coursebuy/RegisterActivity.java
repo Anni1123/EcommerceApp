@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                             if (task.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Congratulations, your account has been created Sucessfully.", Toast.LENGTH_SHORT).show();
                                 loadingbar.dismiss();
 
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
@@ -102,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else{
 
-                    Toast.makeText(RegisterActivity.this, "This " + phone + " already exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "This " + phone + "number already exists.", Toast.LENGTH_SHORT).show();
                     loadingbar.dismiss();
                     Toast.makeText(RegisterActivity.this, "Please try again using another phone number.", Toast.LENGTH_SHORT).show();
 
